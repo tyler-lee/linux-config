@@ -1,0 +1,15 @@
+[BigInteger]
+option:ctags_params = "--languages=c++"
+/home/tyler/Projects/cplusplus/bigInteger
+
+
+[test]
+option:ctags_params = "--languages=c++"
+/home/tyler/Projects/cplusplus/test
+
+
+[DBC]
+option:ctags_params = "--languages=c++"
+/home/tyler/Projects/DACAS_Projects/DBC/src
+
+
