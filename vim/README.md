@@ -25,5 +25,5 @@ Install Plugins
 	To install from command line: `vim +PluginInstall +qall`
 
 Additions
-	create a indexer_files in ~/.vim/
+	create a `indexer_files` in `~/.vim/`
 
