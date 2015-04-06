@@ -16,7 +16,7 @@
 
 	`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-	Refer to [Vundle] for details.
+	Refer to [Vundle](https://github.com/gmarik/Vundle.vim) for details.
 
 2. Copy Configures:
 
