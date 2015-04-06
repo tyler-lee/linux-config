@@ -11,26 +11,25 @@
 	* [syntastic](https://github.com/scrooloose/syntastic)
 	* [minibufexpl](https://github.com/fholgado/minibufexpl.vim)
 
-##Install
-Install Vundle
+##Quick Start
+1. Set up [Vundle]:
 
-	Simply just typing:
+	`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-		`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+	Refer to [Vundle] for details.
 
-	Refer to [Vundle](https://github.com/gmarik/Vundle.vim) for details.
-
-Copy Configures
+2. Copy Configures:
 
 	Copy `vimrc` to `~/.vim/vimrc` or `~/.vimrc`
 
-Install Plugins
+3. Install Plugins:
 
 	Launch `vim` and run `:PluginInstall`
 
 	To install from command line: `vim +PluginInstall +qall`
 
-Additions
+4. Additions:
 
 	create a `indexer_files` in `~/.vim/`
+
 
