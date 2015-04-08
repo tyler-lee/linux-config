@@ -30,6 +30,6 @@
 
 4. Additions:
 
-	create a `indexer_files` in `~/.vim/`
+	Edit file `indexer_files` in `~/.vim/` to support project indexer.
 
 
