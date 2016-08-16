@@ -1,0 +1,45 @@
+[user]
+	name = Tyler-Lee
+	email = lihuorong@iie.ac.cn\n
+[core]
+	excludesfile = c:/Users/tyler/.gitignore
+	editor = vim
+	excludesfile = /home/tyler/.gitignore
+	quotepath = false
+[push]
+	default = simple
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[diff]
+	tool = vimdiff
+[imap]
+	folder = Git
+	host = imap://imap.cstnet.cn
+	user = lihuorong@iie.ac.cn
+	port = 143
+	sslverify = false
+[sendemail]
+	smtpserver = smtp.cstnet.cn
+	smtpserverport = 25
+	smtpuser = lihuorong@iie.ac.cn
+	smtpencryption = starttls
+	confirm = auto
+[alias]
+	ll = log --color --graph --decorate --abbrev-commit
+	lld = log --date-order --color --graph --decorate --abbrev-commit
+	ld = log --date-order --color --graph --decorate --abbrev-commit --pretty=oneline
+	l = log --color --graph --decorate --abbrev-commit --pretty=oneline
+	ls = log --color --graph --decorate --abbrev-commit --pretty=oneline --simplify-by-decoration
+	co = checkout
+	ca = commit -a --verbose
+	cam = commit -am
+	cm = commit -m
+	st = status
+	bn = branch
+	tn = tag -n1
+	df = diff
+	fp = format-patch -M -B
+	df = difftool
