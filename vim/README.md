@@ -30,6 +30,10 @@
 
 4. Additions:
 
-	Edit file `indexer_files` in `~/.vim/` to support project indexer.
+	a. Edit file `indexer_files` in `~/.vim/` to support project indexer.
+
+	b. Channge directory to YouCompleteMe, and compile YCM accordingly.
+
+	c. Copy `tern-config` to `~/.tern-config`
 
 
