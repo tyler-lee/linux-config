@@ -44,7 +44,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/matchit.zip'
 " 基于标签的代码导航
-Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
@@ -687,11 +687,11 @@ nnoremap <Leader>je :YcmCompleter GoToDefinition<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indexer DfrankUtil vimprj
 " 设置列表位置
-let g:indexer_indexerListFilename = '~/.vim/indexer_files'
+"let g:indexer_indexerListFilename = '~/.vim/indexer_files'
 " 设置插件 indexer 调用 ctags 的参数
 " 默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v
 " 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
-let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+"let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
