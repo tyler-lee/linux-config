@@ -49,9 +49,9 @@ Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
 Plugin 'dyng/ctrlsf.vim.git'
-" 由接口快速生成实现框架
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'vim-scripts/FSwitch.git'
+" 由接口快速生成实现框架，暂时不需要
+"Plugin 'derekwyatt/vim-protodef'
+"Plugin 'vim-scripts/FSwitch.git'
 "快速 加减注释
 Plugin 'scrooloose/nerdcommenter'
 " <leader>cc --- comment selection
@@ -79,7 +79,7 @@ Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'vim-scripts/TaskList.vim'
 "edit history, 可以查看回到某个历史状态
 Plugin 'sjl/gundo.vim'
-"multiple-cursors
+"multiple-cursors, 即多重选中，可以批量编辑替换等
 Plugin 'terryma/vim-multiple-cursors'
 
 " Archlinux has following plugins:
@@ -713,12 +713,12 @@ nnoremap <Leader>sp :CtrlSF<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-protodef FSwitch
 " 设置 pullproto.pl 脚本路径
-let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
+"let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
 " 成员函数的实现顺序与声明顺序一致
-let g:disable_protodef_sorting=1
+"let g:disable_protodef_sorting=1
 " 接口与实现快速切换
 " *.cpp 和 *.h 间切换
-nmap <Leader>ch :A<CR>
+"nmap <Leader>ch :A<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
