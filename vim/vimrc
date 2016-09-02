@@ -47,6 +47,8 @@ Plugin 'vim-scripts/matchit.zip'
 "Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
+" 格式化JS代码，默认的快捷键是<leader>ff
+Plugin 'vim-scripts/jsbeautify'
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
 Plugin 'dyng/ctrlsf.vim.git'
 " 由接口快速生成实现框架，暂时不需要
