@@ -45,11 +45,12 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/matchit.zip'
 " 基于标签的代码导航
 "Plugin 'vim-scripts/indexer.tar.gz'
-Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/vimprj'
+"Plugin 'vim-scripts/DfrankUtil'
+"Plugin 'vim-scripts/vimprj'
 " 格式化JS代码，默认的快捷键是<leader>ff
 Plugin 'vim-scripts/jsbeautify'
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
+" 需要安装ag或者ack
 Plugin 'dyng/ctrlsf.vim.git'
 " 由接口快速生成实现框架，暂时不需要
 "Plugin 'derekwyatt/vim-protodef'
@@ -62,21 +63,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Raimondi/delimitMate'
 "for visual selection
 Plugin 'terryma/vim-expand-region'
-" python fly check, 弥补syntastic只能打开和保存才检查语法的不足
-Plugin 'kevinw/pyflakes-vim'
-" for python.vim syntax highlight
-Plugin 'hdima/python-syntax'
-" for golang
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'Blackrush/vim-gocode'
-" for markdown
-Plugin 'plasticboy/vim-markdown'
 " for javascript
 Plugin 'pangloss/vim-javascript'
 "for jquery
 Plugin 'nono/jquery.vim'
-"for nginx conf file highlight.   need to confirm it works
-Plugin 'evanmiller/nginx-vim-syntax'
 " task list
 Plugin 'vim-scripts/TaskList.vim'
 "edit history, 可以查看回到某个历史状态
@@ -85,16 +75,16 @@ Plugin 'sjl/gundo.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
 " Archlinux has following plugins:
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 " 模板补全
 "Plugin 'SirVer/ultisnips'
 " 快速加入修改环绕字符
 "Plugin 'tpope/vim-surround'
 " 静态分析器 syntastic 错误标识
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -233,11 +223,11 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 "create undo file
-set undolevels=1000         " How many undos
-set undoreload=10000        " number of lines to save for undo
+set undolevels=100         " How many undos
+set undoreload=1000        " number of lines to save for undo
 if v:version >= 730
-    set undofile                " keep a persistent backup file
-    set undodir=~/bak/vimundo/
+  set undofile                " keep a persistent backup file
+  set undodir=~/bak/vimundo/
 endif
 
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -452,13 +442,10 @@ nnoremap <silent> g* g*zz
 nmap t o<ESC>k
 nmap T O<ESC>j
 nmap ; :
-vnoremap <leader>y "+y
-nmap <leader>p "+p
 map Y y$
 cmap w!! w !sudo tee >/dev/null %
 noremap <F1> <ESC>
 nmap <space>  %
-imap <space>{ <space>{}<ESC>k$a
 
 " Quickly close the current window
 nnoremap <leader>q :qa<CR>
@@ -709,6 +696,17 @@ let g:UltiSnipsJumpBackwardTrigger="<Leader><s-tab>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlsf
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
+" refer to :help ctrlsf-options for more information.
+" 设置ctrlsf 使用ag
+"let g:ctrlsf_ackprg = 'ag'
+" 选中后是否自动关闭查找结果列表
+"let g:ctrlsf_auto_close = 0
+" 保存前确认提示
+"let g:ctrlsf_confirm_save = 0
+" 忽略查找的目录
+let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules']
+" 默认的查找目录，默认值时当前目录。我设置成工程目录
+let g:ctrlsf_default_root = 'project+fw'
 nnoremap <Leader>sp :CtrlSF<CR>
 
 
@@ -738,22 +736,6 @@ let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting = 1
 highlight SyntasticErrorSign guifg=white guibg=black
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" pyflakes-vim
-" python fly check, 弥补syntastic只能打开和保存才检查语法的不足
-let g:pyflakes_use_quickfix = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" python-syntax
-let python_highlight_all = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-markdown
-let g:vim_markdown_folding_disabled=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
