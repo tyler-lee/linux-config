@@ -2,9 +2,9 @@
 	name = Tyler-Lee
 	email = lihuorong@iie.ac.cn\n
 [core]
-	excludesfile = c:/Users/tyler/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
-	excludesfile = /home/tyler/.gitignore
+	excludesfile = ~/.gitignore
 	quotepath = false
 [push]
 	default = simple
