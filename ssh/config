@@ -3,3 +3,8 @@ hostname	_hostname_or_ip_
 user		_username_on_host_
 identityFile	~/.ssh/privatekeyFile
 port		_port_22_by_default_
+
+Host *
+	ControlMaster auto
+	ControlPath ~/.ssh/master-%r@%h:%p
+
