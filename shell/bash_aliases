@@ -1,0 +1,25 @@
+alias a='alias'
+alias b='cd -'
+alias q='exit'
+alias prodir='cd ~/Documents/DACAS_Projects/'
+alias sm='cd ~/Documents/DACAS_Projects/IE_SM/SMxWindows-CNG'
+alias smtest='cd ~/Documents/DACAS_Projects/IE_SM/SMxWindows-Test'
+alias smcert='cd ~/Documents/DACAS_Projects/IE_SM/SMxWindows-Certificate'
+alias lcore='cd ~/Documents/DACAS_Projects/LightCore-Bare'
+alias gitadmin='cd ~/Documents/DACAS_Projects/gitolite-admin'
+alias lc='cd ~/Documents/DACAS_Projects/lightcore'
+alias lcs='cd ~/Documents/DACAS_Projects/lightcore/src/static/js'
+alias lcc='cd ~/Documents/DACAS_Projects/lightcore/src/static/js/crypto'
+alias vibash='vi ~/.bash_aliases && source ~/.bash_aliases'
+alias sgx='cd ~/Documents/DACAS_Projects/opensgx'
+alias secbook='ssh secbook'
+alias lsecbook='ssh lsecbook'
+alias alisecbook='ssh alisecbook'
+alias awssecbook='ssh awssecbook'
+alias tyler='ssh tyler_dacas'
+
+ANDROID_NDK="/c/Program Files/Android/android-ndk-r13b"
+ANDROID_SDK="~/AppData/Local/Android/sdk"
+ANDROID_SYSROOT="$ANDROID_NDK/platforms/android-22/arch-arm"
+export PATH="$ANDROID_SDK/platform-tools:$ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin:$PATH"
+alias gcc-arm='arm-linux-androideabi-gcc --sysroot="$ANDROID_SYSROOT" -pie -fPIC'
