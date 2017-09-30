@@ -157,8 +157,13 @@ set foldenable
 " syntax    使用语法定义折叠
 " diff      对没有更改的文本进行折叠
 " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-set foldmethod=syntax
-set foldlevel=99
+set foldmethod=indent
+"set foldlevel=99
+au BufWinLeave * silent mkview  " 保存文件的折叠状态
+au BufRead * silent loadview    " 恢复文件的折叠状态
+" TODO: 确定space用于哪个作用
+nnoremap <space> za             " 用空格来切换折叠状态
+"nmap <space>  %
 
 "Smart indent
 set smartindent
@@ -418,7 +423,6 @@ nmap ; :
 map Y y$
 cmap w!! w !sudo tee >/dev/null %
 noremap <F1> <ESC>
-nmap <space>  %
 
 " Quickly close the current window
 nnoremap <leader>q :qa<CR>
@@ -519,11 +523,17 @@ map <leader>w :MBEbw<CR>
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
 map <silent><F8> :NERDTreeToggle<CR>
+" 当不带参数打开Vim时自动加载项目树
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 当所有文件关闭时关闭项目树窗格
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" 不显示这些文件
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '^\~$', 'node_modules' ]
+" 不显示项目树上额外的信息，例如帮助、提示什么的
+let NERDTreeMinimalUI=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
 let g:netrw_home='~/.vim/backup'
-"close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -548,24 +558,23 @@ let g:tagbar_autofocus = 1
 " ctrlp
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip " MacOSX/Linux
+let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn|rvm)$', 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$'}
 map <leader>f :CtrlPMRU<CR>
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
-    \ }
-"\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
+"let g:ctrlp_match_window_bottom=1
+"let g:ctrlp_max_height=15
+"let g:ctrlp_match_window_reversed=0
+"let g:ctrlp_mruf_max=500
+"let g:ctrlp_follow_symlinks=1
+
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-powerline
-let g:Powerline_symbols = 'unicode'
+"let g:Powerline_symbols = 'unicode'
+let g:Powerline_symbols = 'fancy'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
