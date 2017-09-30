@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Author: Tyler Lee
-" Date: 2015-04-06
+" Date: 2017-09-30
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -8,83 +8,57 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
+" 函数导航栏
 Plugin 'majutsushi/tagbar'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'kien/rainbow_parentheses.vim'
-"主题 solarized
+" 主题 solarized
 Plugin 'altercation/vim-colors-solarized'
-"for show no user whitespaces
+" 删除多余空格whitespaces
 Plugin 'bronson/vim-trailing-whitespace'
-"更高效的移动 ,, + w/fx
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'vim-scripts/matchit.zip'
+" 更高效的移动 ,, + w/fx
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'vim-scripts/matchit.zip'
 " 基于标签的代码导航
 "Plugin 'vim-scripts/indexer.tar.gz'
 "Plugin 'vim-scripts/DfrankUtil'
 "Plugin 'vim-scripts/vimprj'
 " 格式化JS代码，默认的快捷键是<leader>ff
-Plugin 'vim-scripts/jsbeautify'
-" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
-" 需要安装ag或者ack
-Plugin 'dyng/ctrlsf.vim.git'
+"Plugin 'vim-scripts/jsbeautify'
 " 由接口快速生成实现框架，暂时不需要
 "Plugin 'derekwyatt/vim-protodef'
 "Plugin 'vim-scripts/FSwitch.git'
-"快速 加减注释
+" 注释
 Plugin 'scrooloose/nerdcommenter'
 " <leader>cc --- comment selection
 " <leader>cu --- uncomment selection
-"自动补全单引号，双引号等
+" 代码折叠
+Plugin 'tmhedberg/SimpylFold'
+" 自动补全单引号，双引号等
 Plugin 'Raimondi/delimitMate'
-"for visual selection
-Plugin 'terryma/vim-expand-region'
-" for javascript
-Plugin 'pangloss/vim-javascript'
-"for jquery
-Plugin 'nono/jquery.vim'
-" task list
+" TODO列表
 Plugin 'vim-scripts/TaskList.vim'
-"edit history, 可以查看回到某个历史状态
-Plugin 'sjl/gundo.vim'
-"multiple-cursors, 即多重选中，可以批量编辑替换等
+" 多重选中，可以批量编辑替换等
 Plugin 'terryma/vim-multiple-cursors'
-
-" Archlinux has following plugins:
+" 项目树
 Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
+" 全局搜索
 Plugin 'kien/ctrlp.vim'
+" 代码自动补全
 Plugin 'Valloric/YouCompleteMe'
-" 模板补全
-"Plugin 'SirVer/ultisnips'
-" 快速加入修改环绕字符
-"Plugin 'tpope/vim-surround'
 " 静态分析器 syntastic 错误标识
 Plugin 'scrooloose/syntastic'
+" 底部状态栏
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" 标签页管理
+Plugin 'fholgado/minibufexpl.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,7 +84,7 @@ let g:mapleader = ','
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " history存储长度。
-set history=2000
+set history=1000
 
 "检测文件类型
 filetype on
@@ -137,8 +111,7 @@ set noswapfile
 set cursorcolumn
 set cursorline              " 突出显示当前行
 
-"设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
-"好处：误删什么的，如果以前屏幕打开，可以找回
+" 设置退出vim后，内容显示在终端屏幕, 可以用于查看和复制，好处：误删什么的，如果以前屏幕打开，可以找回
 "set t_ti= t_te=    #tyler lee set
 
 "- 则点击光标不会换,用于复制
@@ -480,13 +453,6 @@ map <Leader>tp :tabprevious<CR>
 "" Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" buffer switch
-noremap <leader>bn :MBEbn<CR>
-noremap <leader>bp :MBEbp<CR>
-noremap <leader>w :MBEbw<CR>
-nmap <leader>w :MBEbw<CR>
-map <leader>w :MBEbw<CR>
-
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
 " wholeword：是否整词匹配
@@ -541,6 +507,15 @@ nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' wi
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" minibufexpl buffer switch
+noremap <leader>bn :MBEbn<CR>
+noremap <leader>bp :MBEbp<CR>
+noremap <leader>w :MBEbw<CR>
+nmap <leader>w :MBEbw<CR>
+map <leader>w :MBEbw<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
 map <silent><F8> :NERDTreeToggle<CR>
@@ -574,7 +549,7 @@ let g:tagbar_autofocus = 1
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
@@ -644,33 +619,26 @@ highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
-
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
 let g:ycm_confirm_extra_conf=0
-
 " 开启 YCM 标签补全引擎
 let g:ycm_collect_identifiers_from_tags_files=1
-
 "TODO: 引入 C++ 标准库 tags
 set tags+=~/.vim/tags/stdcpp.tags
-
 " 补全内容不以分割子窗口形式出现，只显示补全列表
 set completeopt-=preview
-
 " 从第一个键入字符就开始罗列匹配项
 let g:ycm_min_num_of_chars_for_completion=1
-
 " 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_cache_omnifunc=0
-
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_show_diagnostics_ui = 0
-
-" 基于语义的代码导航
-nnoremap <Leader>jd :YcmCompleter GoToDeclaration<CR>
-" 只能是 #include 或已打开的文件
-nnoremap <Leader>je :YcmCompleter GoToDefinition<CR>
+" 基于语义的代码导航，只能是 #include 或已打开的文件
+nnoremap <Leader>je :YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>ji :YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>jf :YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -686,9 +654,9 @@ nnoremap <Leader>je :YcmCompleter GoToDefinition<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
 " TODO: UltiSnips 的 tab 键与 YCM 冲突，重新设定
-let g:UltiSnipsExpandTrigger="<Leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<Leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<Leader><s-tab>"
+"let g:UltiSnipsExpandTrigger="<Leader><tab>"
+"let g:UltiSnipsJumpForwardTrigger="<Leader><tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<Leader><s-tab>"
 "定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
 "let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
@@ -704,10 +672,10 @@ let g:UltiSnipsJumpBackwardTrigger="<Leader><s-tab>"
 " 保存前确认提示
 "let g:ctrlsf_confirm_save = 0
 " 忽略查找的目录
-let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules']
+"let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules']
 " 默认的查找目录，默认值时当前目录。我设置成工程目录
-let g:ctrlsf_default_root = 'project+fw'
-nnoremap <Leader>sp :CtrlSF<CR>
+"let g:ctrlsf_default_root = 'project+fw'
+"nnoremap <Leader>sp :CtrlSF<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -723,8 +691,8 @@ nnoremap <Leader>sp :CtrlSF<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-expand-region
-map = <Plug>(expand_region_expand)
-map - <Plug>(expand_region_shrink)
+"map = <Plug>(expand_region_expand)
+"map - <Plug>(expand_region_shrink)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -740,19 +708,14 @@ highlight SyntasticErrorSign guifg=white guibg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-javascript
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+"let g:html_indent_inctags = "html,body,head,tbody"
+"let g:html_indent_script1 = "inc"
+"let g:html_indent_style1 = "inc"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TaskList
 map <leader>td <Plug>TaskList
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gundo
-nnoremap <leader>h :GundoToggle<CR>
 
 
 "=============== config for plugins end =================
