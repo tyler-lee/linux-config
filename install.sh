@@ -20,6 +20,7 @@ git clone https://github.com/tmux-plugins/tmux-continuum.git ~/.tmux/
 # configure Vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -s "$(PWD)/vim/vimrc" ~/.vim/vimrc
+ln -s "$(PWD)/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe/
 echo
