@@ -15,7 +15,7 @@ ln -s "$(PWD)/git/gitignore" ~/.gitignore
 # configure Shell
 ln -s "$(PWD)/shell/bashrc" ~/.bashrc
 ln -s "$(PWD)/shell/tmux.conf" ~/.tmux.conf
-git clone https://github.com/tmux-plugins/tmux-continuum.git ~/.tmux/
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # configure Vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
