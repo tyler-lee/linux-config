@@ -4,23 +4,34 @@
 
 # prerequisition
 echo
-echo Please install Vim, tmux, and SSH first
+echo Install Git, Vim, tmux, and SSH first.
 echo
-exit
+Name=$(lsb_release -is)
+if [[ "Ubuntu" == "${Name}" ]]; then
+	sudo apt install git vim tmux
+elif [[ "CentOS" == "${Name}" || "Federa" == "${Name}" ]]; then
+	sudo yum install git vim tmux
+else
+	echo "Install git vim tmux"
+fi
+#exit
 
 # configure Git
-ln -s "$(PWD)/git/gitconfig" ~/.gitconfig
-ln -s "$(PWD)/git/gitignore" ~/.gitignore
+echo "Config Git (Git is required.)"
+ln -s "${PWD}/git/gitconfig" ~/.gitconfig
+ln -s "${PWD}/git/gitignore" ~/.gitignore
 
 # configure Shell
-ln -s "$(PWD)/shell/bashrc" ~/.bashrc
-ln -s "$(PWD)/shell/tmux.conf" ~/.tmux.conf
+echo "Config Shell (tmux is required.)"
+ln -s "${PWD}/shell/bashrc" ~/.bashrc
+ln -s "${PWD}/shell/tmux.conf" ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # configure Vim
+echo "Config Vim (Vim is required.)"
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-ln -s "$(PWD)/vim/vimrc" ~/.vim/vimrc
-ln -s "$(PWD)/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
+ln -s "${PWD}/vim/vimrc" ~/.vim/vimrc
+ln -s "${PWD}/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
 vim +PluginInstall +qall
 pushd ~/.vim/bundle/YouCompleteMe/
 echo
