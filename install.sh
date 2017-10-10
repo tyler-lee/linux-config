@@ -4,13 +4,15 @@
 
 # prerequisition
 echo
-echo Install Git, Vim, tmux, and SSH first.
+echo Install Git, Vim, tmux, SSH, and some dependencies.
 echo
 Name=$(lsb_release -is)
 if [[ "Ubuntu" == "${Name}" ]]; then
-	sudo apt install git vim tmux
-elif [[ "CentOS" == "${Name}" || "Federa" == "${Name}" ]]; then
+	sudo apt install git vim tmux build-essential cmake python-dev python3-dev
+elif [[ "CentOS" == "${Name}" ]]; then
 	sudo yum install git vim tmux
+elif [[ "Federa" == "${Name}" ]]; then
+	sudo dnf install git vim tmux automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
 else
 	echo "Install git vim tmux"
 fi
@@ -38,7 +40,7 @@ echo
 echo Begin to compile YouCompleteMe.
 echo If packages or submodules are missing, please install them first. Refer to https://github.com/Valloric/YouCompleteMe.
 ./install.py --clang-completer
-echo 
+echo
 echo For each project, please copy YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py to project_dir/.ycm_extra_conf.py
 popd
 
