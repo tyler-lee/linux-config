@@ -129,4 +129,5 @@ alias vibash='vi ~/.bashrc && source ~/.bashrc'
 source ~/workspace_sgx/sgxsdk/environment
 alias sgx='cd ~/workspace_sgx/'
 alias makesgx='make SGX_PRERELEASE=1 SGX_DEBUG=0'
+alias makefresh='make uninstall && make clean && make && make install'
 
