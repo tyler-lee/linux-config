@@ -122,9 +122,11 @@ fi
 # User custom aliases
 alias q='exit'
 alias b='cd -'
+alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
 
 # Develop environment configurations
 source ~/workspace_sgx/sgxsdk/environment
 alias sgx='cd ~/workspace_sgx/EnclaveTest'
 alias makesgx='make SGX_MODE=SIM SGX_DEBUG=0'
+
