@@ -126,10 +126,19 @@ alias q='exit'
 alias b='cd -'
 alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
+alias ls='ls -h'
 
 # Develop environment configurations
 source ~/workspace_sgx/sgxsdk/environment
-alias sgx='cd ~/workspace_sgx/'
+alias cdsgx='cd ~/workspace_sgx/'
 alias makesgx='make SGX_PRERELEASE=1 SGX_DEBUG=0'
 alias makefresh='make uninstall && make clean && make && make install'
+
+# Kernel compile configurations
+kernel_source='/usr/src/linux-source-4.10.0'
+alias cdlinuxsource="cd $kernel_source"
+alias makekernel="pushd $kernel_source; make -j8; popd"
+alias makeinstallmodules="pushd $kernel_source; sudo make modules_install; popd"
+alias makeinstall="pushd $kernel_source; sudo make install; popd"
+alias makekernelclean="pushd $kernel_source; make clean; popd"
 
