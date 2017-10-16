@@ -120,6 +120,8 @@ if ! shopt -oq posix; then
 fi
 
 # User custom aliases
+alias du='du -sh'
+alias df='df -h'
 alias q='exit'
 alias b='cd -'
 alias dmesg='dmesg -H'
