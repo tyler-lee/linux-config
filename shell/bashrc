@@ -142,3 +142,6 @@ alias makeinstallmodules="pushd $kernel_source; sudo make modules_install; popd"
 alias makeinstall="pushd $kernel_source; sudo make install; popd"
 alias makekernelclean="pushd $kernel_source; make clean; popd"
 
+# delete custom kernel including:
+# files under /boot, directories under /lib/modules/, and then update startup entry.
+
