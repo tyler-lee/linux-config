@@ -126,7 +126,7 @@ alias q='exit'
 alias b='cd -'
 alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
-alias ls='ls -h'
+alias ll='ls -alFh'
 
 # Develop environment configurations
 source ~/workspace_sgx/sgxsdk/environment
