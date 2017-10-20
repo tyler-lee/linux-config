@@ -130,13 +130,14 @@ alias ll='ls -alFh'
 
 # Develop environment configurations
 source ~/workspace_sgx/sgxsdk/environment
-alias cdsgx='cd ~/workspace_sgx/'
+alias cdenclave='cd ~/workspace_sgx/EnclaveTest'
+alias cddriver="cd ~/workspace_sgx/linux-cmd-driver"
 alias makesgx='make SGX_PRERELEASE=1 SGX_DEBUG=0'
 alias makefresh='make uninstall && make clean && make && make install'
 
 # Kernel compile configurations
-kernel_source='/usr/src/linux-source-4.10.0'
-alias cdlinuxsource="cd $kernel_source"
+kernel_source='~/Downloads/ubuntu-kernel/linux-hwe-4.10.0'
+alias cdkernel="cd $kernel_source"
 alias makekernel="pushd $kernel_source; time make -j8; popd"
 alias makekernelmodules_install="pushd $kernel_source; time sudo make modules_install; popd"
 alias makekernelinstall="pushd $kernel_source; time sudo make install; popd"
