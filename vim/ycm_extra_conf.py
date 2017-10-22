@@ -63,6 +63,8 @@ flags = [
 '-I',
 './include',
 '-I',
+'~/workspace_sgx/EnclaveTest/mbedtls/include',
+'-I',
 '~/workspace_sgx/sgxsdk/include',
 '-isystem',
 '/usr/include',
