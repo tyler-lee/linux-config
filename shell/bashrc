@@ -134,7 +134,7 @@ icmd_dir='~/workspace_sgx/linux-cmd-driver'
 sgx_dir='~/workspace_sgx/ssgx'
 alias cdssgx="cd $sgx_dir"
 alias cdicmd="cd $icmd_dir"
-alias makesgx="pushd $sgx_dir; make SGX_PRERELEASE=1 SGX_DEBUG=0; popd"
+alias makesgxpre="pushd $sgx_dir; make SGX_PRERELEASE=1 SGX_DEBUG=0; popd"
 alias makesgxsim="pushd $sgx_dir; make SGX_MODE=SIM SGX_DEBUG=0 && ./app; popd"
 alias makeicmdfresh="pushd $icmd_dir; make uninstall && make clean && make && make install && cat /dev/icmd; popd"
 
