@@ -127,6 +127,8 @@ alias b='cd -'
 alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
 alias ll='ls -alFh'
+alias tmux='tmux attach || tmux'
+alias cdicics='cd ~/OneDrive/Documents/IntelSGX/ICICS2017/'
 
 # Develop environment configurations
 source ~/workspace_sgx/sgxsdk/environment
