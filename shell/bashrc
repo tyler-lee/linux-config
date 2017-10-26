@@ -137,18 +137,15 @@ sgx_dir='~/workspace_sgx/ssgx'
 alias cdssgx="cd $sgx_dir"
 alias cdicmd="cd $icmd_dir"
 alias makesgxpre="pushd $sgx_dir; make SGX_PRERELEASE=1 SGX_DEBUG=0; popd"
-alias makesgxsim="pushd $sgx_dir; make SGX_MODE=SIM SGX_DEBUG=0 && ./app; popd"
+alias makesgxsim="pushd $sgx_dir; make SGX_MODE=SIM SGX_DEBUG=0; popd"
 alias makeicmdfresh="pushd $icmd_dir; make uninstall && make clean && make && make install && cat /dev/icmd; popd"
 
 # Kernel compile configurations
 kernel_source='~/Downloads/ubuntu-kernel/linux-hwe-4.10.0'
 alias cdkernel="cd $kernel_source"
-alias makekernel="pushd $kernel_source; time make -j8; popd"
+alias makekernel="pushd $kernel_source; time make -j; popd"
 alias makekernelmodules_install="pushd $kernel_source; time sudo make modules_install; popd"
 alias makekernelinstall="pushd $kernel_source; time sudo make install; popd"
 alias makekernelclean="pushd $kernel_source; time make clean; popd"
 #alias makekernelall='makekernel && makemodules_install && makekernel_install'
-
-# delete custom kernel including:
-# files under /boot, directories under /lib/modules/, and then update startup entry.
 
