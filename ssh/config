@@ -1,10 +1,14 @@
-Host _hostID_
-hostname	_hostname_or_ip_
-user		_username_on_host_
-identityFile	~/.ssh/privatekeyFile
-port		_port_22_by_default_
+#Host _hostID_
+#hostname	_hostname_or_ip_
+#user		_username_on_host_
+#identityFile	~/.ssh/privatekeyFile
+#port		_port_22_by_default_
 
 Host *
 	ControlMaster auto
 	ControlPath ~/.ssh/master-%r@%h:%p
 
+Host sgx
+	hostname	192.168.151.225
+	user		sgx
+	port		22
