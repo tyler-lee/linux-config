@@ -1,0 +1,25 @@
+export PATH=~/bin:$PATH
+alias a='alias'
+alias b='cd -'
+alias q='exit'
+
+#use mvim if OS is OSX
+if [[ "`uname -s`" -eq "Darwin" ]]; then
+	alias vim=/usr/local/bin/mvim
+fi
+
+alias vi='vim'
+alias vish='vi ~/.myAliases && source ~/.myAliases'
+#alias -s py=vi       # 在命令行直接输入 python 文件，会用 vim 中打开，以下类似
+alias -s js=vi
+alias -s h=vi
+alias -s hpp=vi
+alias -s c=vi
+alias -s cpp=vi
+alias -s java=vi
+alias -s txt=vi
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+alias p='ps au'
