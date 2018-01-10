@@ -25,6 +25,7 @@ ln -s "${PWD}/git/gitignore" ~/.gitignore
 
 # configure Shell
 echo "Config Shell (tmux is required.)"
+mv ~/.bashrc ~/.bashrc_old
 ln -s "${PWD}/shell/bashrc" ~/.bashrc
 ln -s "${PWD}/shell/tmux.conf" ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
