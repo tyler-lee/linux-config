@@ -40,6 +40,7 @@ pushd ~/.vim/bundle/YouCompleteMe/
 echo
 echo Begin to compile YouCompleteMe.
 echo If packages or submodules are missing, please install them first. Refer to https://github.com/Valloric/YouCompleteMe.
+git submodule update --init --recursive
 ./install.py --clang-completer
 echo
 echo For each project, please copy YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py to project_dir/.ycm_extra_conf.py
