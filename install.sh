@@ -8,11 +8,11 @@ echo Install Git, Vim, tmux, SSH, and some dependencies.
 echo
 Name=$(lsb_release -is)
 if [[ "Ubuntu" == "${Name}" ]]; then
-	sudo apt install git vim tmux build-essential cmake python-dev python3-dev
+	sudo apt install git vim tmux build-essential cmake python-dev python3-dev clang
 elif [[ "CentOS" == "${Name}" ]]; then
 	sudo yum install git vim tmux
 elif [[ "Federa" == "${Name}" ]]; then
-	sudo dnf install git vim tmux automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
+	sudo dnf install git vim tmux automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel clang
 else
 	echo "Install git vim tmux"
 fi
