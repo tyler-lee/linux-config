@@ -23,3 +23,6 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias p='ps au'
+
+#thesis compile
+alias thesiscompile="pushd ~/Documents/我的坚果云/Personal/博士学位论文/结题/ucasthesis && ./artratex.sh xa && popd"
