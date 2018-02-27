@@ -1,14 +1,80 @@
+################## Template ###################################
 #Host _hostID_
 #hostname	_hostname_or_ip_
 #user		_username_on_host_
 #identityFile	~/.ssh/privatekeyFile
 #port		_port_22_by_default_
 
+################## session config begin ###################################
 Host *
 	ControlMaster auto
 	ControlPath ~/.ssh/master-%r@%h:%p
+################## session config end ###################################
 
+################## for NUC sgx begin ###################################
 Host sgx
-	hostname	192.168.151.225
+	hostname	192.168.151.36
 	user		sgx
 	port		22
+################## for NUC sgx end ###################################
+
+###################### AWS begin #############################
+host awssecbook
+Hostname		ec2-54-223-127-39.cn-north-1.compute.amazonaws.com.cn
+User			ec2-user
+identityFile		~/.ssh/Secbook.pem
+
+host alisecbook
+Hostname		115.28.148.211
+User			secbook
+identityFile		~/.ssh/secbookUbuntu.pem
+
+host secbook
+Hostname		52.196.243.40
+User			ubuntu
+identityFile		~/.ssh/secbookUbuntu.pem
+
+host secbook2
+Hostname		52.69.68.34
+User			ubuntu
+identityFile		~/.ssh/secbookUbuntu.pem
+
+host amazon
+	Hostname			ec2-54-169-206-251.ap-southeast-1.compute.amazonaws.com
+	User				ubuntu
+	identityFile		~/.ssh/lightcoretest.pem
+
+host etherpad2
+	Hostname			ec2-54-174-30-72.ap-southeast-1.compute.amazonaws.com
+	User				ubuntu
+	identityFile		~/.ssh/lightcoretest.pem
+###################### AWS end #############################
+
+###################### for DCS Git server #######################
+#host 192.168.13?.*
+host oldgit
+	#Hostname			192.168.130.46
+	Hostname			192.168.151.246
+	User				oldgit
+	identityFile		~/.ssh/lihuorong
+
+host gitserver
+	#Hostname			192.168.130.46
+	Hostname			192.168.151.246
+	User				git
+	identityFile		~/.ssh/lihuorong
+
+host gitadmin
+	#Hostname			192.168.130.46
+	Hostname			192.168.151.246
+	User				git
+	identityFile		~/.ssh/git-admin
+
+host gitlogin
+	#Hostname			192.168.130.189
+	#Hostname			192.168.130.46
+	Hostname			192.168.151.246
+	User				git
+	identityFile		~/.ssh/git@dacas
+###################### DCS Git server end #######################
+#################################################################
