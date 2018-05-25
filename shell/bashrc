@@ -181,3 +181,6 @@ if [[ "`uname -s`" -eq "Linux" ]]; then
 	PS1="$white[$magenta\u$white@$green\h$white:$cyan\w$yellow\$git_branch$white]\$ $normal"
 fi
 
+# add current directory to LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+
