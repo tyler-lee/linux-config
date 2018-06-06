@@ -51,7 +51,7 @@ Plugin 'scrooloose/nerdtree'
 " 全局搜索
 Plugin 'kien/ctrlp.vim'
 " 代码自动补全
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 " 静态分析器 syntastic 错误标识
 Plugin 'scrooloose/syntastic'
 " 底部状态栏
@@ -788,6 +788,8 @@ highlight SpellLocal term=underline cterm=underline
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+" Tex
+autocmd FileType tex setlocal spell spelllang=en_us,cjk
 " The following line will cause Plugin fail
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 

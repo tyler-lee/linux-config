@@ -34,17 +34,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Config Vim (Vim is required.)"
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -s "${PWD}/vim/vimrc" ~/.vim/vimrc
-ln -s "${PWD}/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
 vim +PluginInstall +qall
-pushd ~/.vim/bundle/YouCompleteMe/
-echo
-echo Begin to compile YouCompleteMe.
-echo If packages or submodules are missing, please install them first. Refer to https://github.com/Valloric/YouCompleteMe.
-git submodule update --init --recursive
-./install.py --clang-completer
-echo
-echo For each project, please copy YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py to project_dir/.ycm_extra_conf.py
-popd
+#ln -s "${PWD}/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
+#pushd ~/.vim/bundle/YouCompleteMe/
+#echo
+#echo Begin to compile YouCompleteMe.
+#echo If packages or submodules are missing, please install them first. Refer to https://github.com/Valloric/YouCompleteMe.
+#git submodule update --init --recursive
+#./install.py --clang-completer
+#echo
+#echo For each project, please copy YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py to project_dir/.ycm_extra_conf.py
+#popd
 
 # TODO: configure SSH
 
