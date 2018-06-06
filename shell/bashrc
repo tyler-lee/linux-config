@@ -128,24 +128,59 @@ alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
 alias ll='ls -alFh'
 alias tmux='tmux attach || tmux'
-alias cdssukey='cd ~/OneDrive/Documents/IntelSGX/soft_USB_Key/'
 
 # Develop environment configurations
-source ~/workspace_sgx/sgxsdk/environment
-icmd_dir='~/workspace_sgx/linux-cmd-driver'
-sgx_dir='~/workspace_sgx/ssgx'
-alias cdssgx="cd $sgx_dir"
-alias cdicmd="cd $icmd_dir"
-alias makesgxpre="pushd $sgx_dir; make SGX_PRERELEASE=1 SGX_DEBUG=0; popd"
-alias makesgxsim="pushd $sgx_dir; make SGX_MODE=SIM SGX_DEBUG=0; popd"
-alias makeicmdfresh="pushd $icmd_dir; make uninstall && make clean && make && make install && cat /dev/icmd; popd"
+# default sgxsdk
+#alias makesgxpre='source $PWD/sgxsdk/environment && make SGX_PRERELEASE=1 SGX_DEBUG=0'
+#alias makesgxsim='source $PWD/sgxsdk/environment && make SGX_MODE=SIM SGX_DEBUG=0'
+alias makesgxpre='make SGX_PRERELEASE=1 SGX_DEBUG=0'
+alias makesgxsim='make SGX_MODE=SIM SGX_DEBUG=0'
 
 # Kernel compile configurations
-kernel_source='/usr/src/linux-source-4.10.0'
-alias cdkernel="cd $kernel_source"
-alias makekernel="pushd $kernel_source; time sudo make -j4; popd"
-alias makekernelmodules_install="pushd $kernel_source; time sudo make modules_install; popd"
-alias makekernelinstall="pushd $kernel_source; time sudo make install; popd"
-alias makekernelclean="pushd $kernel_source; time make clean; popd"
-alias makekernelall='pushd $kernel_source; sudo make -j4 && sudo make modules_install && sudo make install; popd'
+alias makekernel="time sudo make -j"
+alias makekernelmodules_install="time sudo make modules_install"
+alias makekernelinstall="time sudo make install"
+alias makekernelclean="time make clean"
+alias makekernelall="sudo make -j && sudo make modules_install && sudo make install"
+
+## Parses out the branch name from .git/HEAD:
+find_git_branch () {
+    local dir=. head
+    until [ "$dir" -ef / ]; do
+        if [ -f "$dir/.git/HEAD" ]; then
+            head=$(< "$dir/.git/HEAD")
+            if [[ $head = ref:\ refs/heads/* ]]; then
+                git_branch=" → ${head#*/*/}"
+            elif [[ $head != '' ]]; then
+                git_branch=" → (detached)"
+            else
+                git_branch=" → (unknow)"
+            fi
+            return
+        fi
+        dir="../$dir"
+    done
+    git_branch=''
+}
+PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+
+# Here is bash color codes you can use
+  black=$'\[\e[1;30m\]'
+    red=$'\[\e[1;31m\]'
+  green=$'\[\e[1;32m\]'
+ yellow=$'\[\e[1;33m\]'
+   blue=$'\[\e[1;34m\]'
+magenta=$'\[\e[1;35m\]'
+   cyan=$'\[\e[1;36m\]'
+  white=$'\[\e[1;37m\]'
+ normal=$'\[\e[m\]'
+
+
+#show git branch
+if [[ "`uname -s`" -eq "Linux" ]]; then
+	PS1="$white[$magenta\u$white@$green\h$white:$cyan\w$yellow\$git_branch$white]\$ $normal"
+fi
+
+# add current directory to LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
 
