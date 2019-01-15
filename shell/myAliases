@@ -1,12 +1,21 @@
+# Put following three lines to shell rc file
+#if [ -f ~/.linux-config/shell/myAliases ]; then
+#    source ~/.linux-config/shell/myAliases
+#fi
+
 export PATH=~/bin:$PATH
 alias a='alias'
 alias b='cd -'
 alias q='exit'
+alias du='du -sh'
+alias df='df -h'
+alias dmesg='dmesg -H'
+alias ll='ls -alFh'
 
 #use mvim if OS is OSX
-if [[ "`uname -s`" -eq "Darwin" ]]; then
-	alias vim=/usr/local/bin/mvim
-fi
+#if [[ "`uname -s`" -eq "Darwin" ]]; then
+#	alias vim=/usr/local/bin/mvim
+#fi
 
 alias vi='vim'
 alias vish='vi ~/.myAliases && source ~/.myAliases'
@@ -25,4 +34,4 @@ alias -s bz2='tar -xjvf'
 alias p='ps au'
 
 #thesis compile
-alias thesiscompile="pushd ~/Documents/我的坚果云/Personal/博士学位论文/结题/ucasthesis && ./artratex.sh xa && popd"
+#alias thesiscompile="pushd ~/Documents/我的坚果云/Personal/博士学位论文/结题/ucasthesis && ./artratex.sh xa && popd"
