@@ -18,7 +18,8 @@ alias ll='ls -alFh'
 #fi
 
 alias vi='vim'
-alias vish='vi ~/.myAliases && source ~/.myAliases'
+alias vialiaes='vi ~/.linux-config/shell/myAliases && source ~/.linux-config/shell/myAliases'
+alias vish='vi ~/.$(basename $SHELL)rc && source ~/.$(basename $SHELL)rc'
 #alias -s py=vi       # 在命令行直接输入 python 文件，会用 vim 中打开，以下类似
 alias -s js=vi
 alias -s h=vi
