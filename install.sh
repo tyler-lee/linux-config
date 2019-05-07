@@ -21,7 +21,6 @@ fi
 # configure Git
 echo "Config Git (Git is required.)"
 ln -s "${PWD}/git/gitconfig" ~/.gitconfig
-ln -s "${PWD}/git/gitignore" ~/.gitignore
 
 # configure Shell
 echo "Config Shell (tmux is required.)"
