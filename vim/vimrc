@@ -48,6 +48,8 @@ Plugin 'vim-scripts/TaskList.vim'
 Plugin 'terryma/vim-multiple-cursors'
 " 项目树
 Plugin 'scrooloose/nerdtree'
+" 全局代码搜索
+Plugin 'mileszs/ack.vim'
 " 全局搜索
 Plugin 'kien/ctrlp.vim'
 " 代码自动补全
@@ -670,16 +672,6 @@ nmap <F4> :YcmDiags<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" indexer DfrankUtil vimprj
-" 设置列表位置
-"let g:indexer_indexerListFilename = '~/.vim/indexer_files'
-" 设置插件 indexer 调用 ctags 的参数
-" 默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v
-" 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
-"let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
 " TODO: UltiSnips 的 tab 键与 YCM 冲突，重新设定
 "let g:UltiSnipsExpandTrigger="<Leader><tab>"
@@ -707,17 +699,6 @@ nmap <F4> :YcmDiags<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-protodef FSwitch
-" 设置 pullproto.pl 脚本路径
-"let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
-" 成员函数的实现顺序与声明顺序一致
-"let g:disable_protodef_sorting=1
-" 接口与实现快速切换
-" *.cpp 和 *.h 间切换
-"nmap <Leader>ch :A<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-expand-region
 "map = <Plug>(expand_region_expand)
 "map - <Plug>(expand_region_shrink)
@@ -735,15 +716,14 @@ highlight SyntasticErrorSign guifg=white guibg=black
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-javascript
-"let g:html_indent_inctags = "html,body,head,tbody"
-"let g:html_indent_script1 = "inc"
-"let g:html_indent_style1 = "inc"
+" TaskList
+map <leader>td <Plug>TaskList
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TaskList
-map <leader>td <Plug>TaskList
+" Ack
+nmap <Leader>ai :Ack -i <cword><CR>
+nmap <Leader>a :Ack <cword><CR>
 
 
 "=============== config for plugins end =================
@@ -802,8 +782,6 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 " Tex
 autocmd FileType tex setlocal spell spelllang=en_us,cjk
-" The following line will cause Plugin fail
-"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 " use :Man to reference man info
 source $VIMRUNTIME/ftplugin/man.vim
@@ -816,14 +794,6 @@ set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,option
 
 " 保存 undo 历史
 set undofile
-
-" 保存快捷键
-map <Leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
-"map <Leader>ss :mksession! my.vim<cr>
-
-" 恢复快捷键
-map <Leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
-"map <Leader>rs :source my.vim<cr>
 
 imap <leader>s <ESC>:w<CR>
 nmap <leader>s :w<CR>
