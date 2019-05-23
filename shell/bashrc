@@ -127,7 +127,6 @@ alias b='cd -'
 alias dmesg='dmesg -H'
 alias vibash='vi ~/.bashrc && source ~/.bashrc'
 alias ll='ls -alFh'
-alias tmux='tmux attach || tmux'
 
 # Develop environment configurations
 # default sgxsdk
