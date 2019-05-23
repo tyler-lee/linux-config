@@ -187,7 +187,7 @@ set undolevels=100         " How many undos
 set undoreload=1000        " number of lines to save for undo
 if v:version >= 730
   set undofile                " keep a persistent backup file
-  set undodir=~/bak/vimundo/
+  set undodir=~/.vim/undodir/
 endif
 
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -791,9 +791,6 @@ nmap <leader>man :Man 3 <cword><CR>
 " 环境恢复
 " 设置环境保存项
 set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
-
-" 保存 undo 历史
-set undofile
 
 imap <leader>s <ESC>:w<CR>
 nmap <leader>s :w<CR>

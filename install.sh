@@ -33,6 +33,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Config Vim (Vim is required.)"
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -s "${PWD}/vim/vimrc" ~/.vim/vimrc
+mkdir ~/.vim/undodir
 vim +PluginInstall +qall
 #ln -s "${PWD}/vim/ycm_extra_conf.py" ~/.ycm_extra_conf.py
 #pushd ~/.vim/bundle/YouCompleteMe/
