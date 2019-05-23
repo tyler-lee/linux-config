@@ -189,8 +189,13 @@ if v:version >= 730
   set undofile                " keep a persistent backup file
   set undodir=~/.vim/undodir/
 endif
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
 
-set wildignore=*.swp,*.bak,*.pyc,*.class
+"exec "!g++ % -o %<"
+
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*~
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip " MacOSX/Linux
 
 "显示当前的行号列号：
 set ruler
@@ -257,8 +262,6 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " 增强模式中的命令行自动完成操作
 set wildmenu
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.class
 
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
@@ -342,19 +345,10 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-"function! NumberToggle()
-  "if(&relativenumber == &number)
-    "set relativenumber! number!
-  "elseif(&number)
-    "set number!
-  "else
-    "set relativenumber!
-  "endif
-  "set number?
-"endfunc
 nnoremap <F2> :call NumberToggle()<cr>
 nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
+
 "set paste
 set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
@@ -364,47 +358,6 @@ set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
-"C，C++, shell, python, javascript, ruby...等按F10运行
-"TODO: compile and run
-nmap <leader>m :wa<CR>:make<CR><CR>
-"map <F10> :call CompileRun()<CR>
-"func! CompileRun()
-"    exec "w"
-"    if &filetype == 'c'
-"        exec "!g++ % -o %<"
-"        exec "!time ./%<"
-"        exec "!rm ./%<"
-"    elseif &filetype == 'cpp'
-"        exec "!g++ % -o %<"
-"        exec "!time ./%<"
-"        exec "!rm ./%<"
-"    elseif &filetype == 'java'
-"        exec "!javac %"
-"        exec "!time java %<"
-"        exec "!rm ./%<.class"
-"    elseif &filetype == 'sh'
-"        exec "!time bash %"
-"    elseif &filetype == 'python'
-"        exec "!time python %"
-"    elseif &filetype == 'html'
-"        exec "!chrome % &"
-"    elseif &filetype == 'go'
-"        exec "!go build %<"
-"        exec "!time go run %"
-"    elseif &filetype == 'mkd' "MarkDown 解决方案为VIM + Chrome浏览器的MarkDown Preview Plus插件，保存后实时预览
-"        exec "!chrome % &"
-"    elseif &filetype == 'javascript'
-"        exec "!time node %"
-"    elseif &filetype == 'coffee'
-"        exec "!time coffee %"
-"    elseif &filetype == 'ruby'
-"        exec "!time ruby %"
-"    endif
-"endfunc
-
-
-nnoremap <leader>v V`}
 
 "Use sane regexes"
 nnoremap / /\v
@@ -418,14 +371,18 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 
-"tyler lee
 "add an empty line
 nmap t o<ESC>k
 nmap T O<ESC>j
+
+" open command window
 nmap ; :
+
+" quick select or copy
 map Y y$
+map <leader>v V}
+
 cmap w!! w !sudo tee >/dev/null %
-noremap <F1> <ESC>
 
 " Quickly close the current window
 nnoremap <leader>q :qa<CR>
@@ -435,9 +392,6 @@ nnoremap <leader>q :qa<CR>
 " column, so swap them
 nnoremap ' `
 nnoremap ` '
-
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
 
 "au VimResized * exe "normal! \<c-w>=""
 
@@ -564,7 +518,6 @@ let g:tagbar_autofocus = 1
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlPMixed' " CtrlP to invoke CtrlP in find file mode.  CtrlPBuffer or CtrlPMRU to invoke CtrlP in find buffer or find MRU file mode. CtrlPMixed to search in Files, Buffers and MRU files at the same time.
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip " MacOSX/Linux
 let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn|rvm)$', 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$'}
 "let g:ctrlp_follow_symlinks=1
 
