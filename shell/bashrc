@@ -183,3 +183,11 @@ fi
 # add current directory to LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
 
+alias git=/usr/local/bin/git
+alias devencdb="tmux a -t encdb || tmux new -s encdb"
+
+# for postgres
+alias pgconnect='~/tmp_basedir_for_pgsql_bld/bin/psql -p 9998 -d postgres'
+alias pgstop='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ stop'
+alias pgstart='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ start'
+alias pgrestart='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ restart'
