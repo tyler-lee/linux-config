@@ -61,8 +61,8 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " 标签页管理
 Plugin 'fholgado/minibufexpl.vim'
 " Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -175,7 +175,7 @@ set softtabstop=4 " 按退格键时可以一次删掉 4 个空格
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
 set cindent
 
-"set expandtab     " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+set expandtab     " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
@@ -476,18 +476,19 @@ map <leader>w :MBEbw<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdtree
-map <leader>n :NERDTreeToggle<CR>
+map <leader>tt :NERDTreeToggle<CR>
 " 当不带参数打开Vim时自动加载项目树
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " 当所有文件关闭时关闭项目树窗格
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " 不显示这些文件
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '^\~$', 'node_modules' ]
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '^\~$', 'node_modules', '\.bin' ]
 " 不显示项目树上额外的信息，例如帮助、提示什么的
 let NERDTreeMinimalUI=1
 let NERDTreeHighlightCursorline=1
 let g:netrw_home='~/.vim/backup'
+let NERDTreeWinPos="right"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -505,9 +506,13 @@ let g:miniBufExplCycleArround=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tagbar
 nmap <F9> :TagbarToggle<CR>
-nmap <leader>tt :TagbarToggle<CR>
+nnoremap <silent> <F9> :TagbarToggle<CR>
+nmap <leader>n :TagbarToggle<CR>
 
 let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+let g:tagbar_autoclose = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
