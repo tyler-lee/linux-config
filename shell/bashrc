@@ -120,7 +120,6 @@ if ! shopt -oq posix; then
 fi
 
 # User custom aliases
-alias du='du -sh'
 alias df='df -h'
 alias q='exit'
 alias b='cd -'
@@ -184,10 +183,15 @@ fi
 export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
 
 alias git=/usr/local/bin/git
-alias devencdb="tmux a -t encdb || tmux new -s encdb"
+alias mytmux="tmux a -t encdb || tmux new -s encdb"
+alias psfind="ps aux | grep"
 
 # for postgres
+alias makedb="make clean && make uninstall && make install && make installcheck && make clean"
+
 alias pgconnect='~/tmp_basedir_for_pgsql_bld/bin/psql -p 9998 -d postgres'
 alias pgstop='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ stop'
 alias pgstart='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ start'
 alias pgrestart='~/tmp_basedir_for_pgsql_bld/bin/pg_ctl -D ~/tmp_datadir_for_pgsql_bld/ restart'
+
+export PATH=~/sysbench/.sysbench/bin:$PATH
